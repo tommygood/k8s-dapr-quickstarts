@@ -1,0 +1,7 @@
+[
+  {
+    "pubsubname": "redis-pubsub",
+    "topic": "orders",
+    "route": "orders"
+  }
+]

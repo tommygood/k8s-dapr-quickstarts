@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secret-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secret-management
+  template:
+    metadata:
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "secret-management"
+      labels:
+        app: secret-management
+    spec:
+      containers:
+        - name: secret-management
+          image: tommygood/dapr-secret-management:latest
+          command: ["node", "index.js"]
+          env:
+            - name: DAPR_SECRET_STORE
+              value: "kubernetes-secret-store"
+            - name: SECRET_NAME
+              value: "mysecrets"

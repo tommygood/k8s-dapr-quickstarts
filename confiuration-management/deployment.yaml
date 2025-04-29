@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dapr-configruation-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dapr-configruation-management
+  template:
+    metadata:
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "dapr-configruation-management"
+        dapr.io/app-port: "6001"
+      labels:
+        app: dapr-configruation-management
+    spec:
+      containers:
+        - name: dapr-configruation-management
+          image: tommygood/dapr-configruation-management:latest
+          command: ["npm", "run", "start"]
+          ports:
+            - containerPort: 6001

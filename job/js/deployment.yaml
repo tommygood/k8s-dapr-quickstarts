@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dapr-job-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dapr-job-service
+  template:
+    metadata:
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "dapr-job-service"
+        dapr.io/app-port: "6200"
+      labels:
+        app: dapr-job-service
+    spec:
+      containers:
+        - name: dapr-job-service
+          image: tommygood/dapr-job-service:latest
+          command: ["npm", "run", "start"]
+          ports:
+            - containerPort: 6200

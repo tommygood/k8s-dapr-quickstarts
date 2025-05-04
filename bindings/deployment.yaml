@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dapr-bindings
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dapr-bindings
+  template:
+    metadata:
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "dapr-bindings"
+        dapr.io/app-port: "5004"
+      labels:
+        app: dapr-bindings
+    spec:
+      containers:
+        - name: dapr-bindings
+          image: tommygood/dapr-bindings:latest
+          command: ["npm", "run", "start"]
+          ports:
+            - containerPort: 5004

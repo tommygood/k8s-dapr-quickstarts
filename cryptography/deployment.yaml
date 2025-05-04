@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dapr-cryptography
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dapr-cryptography
+  template:
+    metadata:
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "dapr-cryptography"
+        dapr.io/volume-mounts-rw: "keys-volume:/keys"
+      labels:
+        app: dapr-cryptography
+    spec:
+      containers:
+        - name: dapr-cryptography
+          image: tommygood/dapr-cryptography:latest
+          command: ["npm", "run", "start"]
+          volumeMounts:
+            - name: keys-volume
+              mountPath: /keys
+              readOnly: true
+      volumes:
+        - name: keys-volume
+          configMap:
+            name: dapr-crypto-keys

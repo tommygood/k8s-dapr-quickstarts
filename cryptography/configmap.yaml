@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dapr-crypto-keys
+  namespace: default
+data:
+  rsa-private-key.pem: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCZfGLtSrlzpI4H
+    2bdP2y9j3S1xUCRjgUrL5Af99WIRBAVqccZYRAdqV2flTUDFzCwHXsWryITUs+cg
+    Uf46SJ148iMFJ3ejQyLdLZOO8DRDDjwz8KoDcAZLPRRQdY5xXJic9KSf0yF9u/aY
+    1Z3vckO3w1zQkliNTdTWxffFw6oJzFYxpFUPaIwl1xYbBoWQTy+vQazrUV7wthFB
+    x97naYO+pbnbyvgQ+ABljrQn2TkkauMwGOKSAAH/oM0DX3nZoKerIMQBc+WBv4No
+    As3g7b66rX0o8BNZcpSkiwOiQc613wXkxsqm2EMDr60uDqeEqtsw3r76bN+7NdCB
+    w+QAy+rJAgMBAAECgf8iq370Q6f6UsZmox958nM39SchFU5O5z82kw9Y1RsUseWd
+    QyoI6F9ZH+sc6M5SVqusMPLTg/B1hDvzXu8iqHyzX0Ho4f/HhwIcoI+RERQh6/+Z
+    UKD84etY6CnBn2d3Vip+yxMOCG0NwyfqrEQOkCYvfO974U+iniQ9yC/EH5ZQAY26
+    p2JRc5XT7c21vUdC3EdgzVyvWj9ykcU2t0bIecslyyGo9CA8KiNYYEqhcbj2htlY
+    1MhjS58K3Dm7P8gzmAnpSwVJ+LKy7Xj463FhjBse3y0pny3IA72/LSfK/W0mwUbe
+    +1of7E/baJN5mcfoLXFE8gZj/WcKNOt9KSXB6AECgYEAva1ioQYfHFKk2tvrcJDz
+    fxxqjmSzw56vQZpRcdOglioK3k7hIoIRieT7MRK1kgFSDFzqB/jRHW/tfU7zbkye
+    xc/V8vNdbROh4b6cNSc+023DOHeyaNyZwQgQp22OsecB/BiReDho+hq9vf5v2z7S
+    WgyeHtEQKyY9VIHZFEVA4skCgYEAzydk5z5wqXmkrGGOBfylv6vgGbyHLTqQvOey
+    rlLo75sBZjY/1vKivd89sU0fAQVuMq3w2tjfQYImLWXMbGzaARGJFagyCkwwcn9h
+    Nuk/92tDzrjDdoT01OnZ7y/qApk9ChygjMeOcrRPR/Tjzz2YWopI4ZIp7xo5kzgq
+    qthuyAECgYEAupPdWuu8mo2o4ChIFjhfbP+0yVDBi4GCf5Oe3csAQfYlLryEtP8g
+    5XW6qXDv7ikiXkrfYuwcN0qsYADTcAIqhAaHPC6sDemr6XUoDxkFsdBcoiUL+B5X
+    mAuo5ijcnp7P0v0PyyQiDzNSxZuMyCupmy6iM0oPD4LT/ValBE2DIBECgYBzZARG
+    83caUFI0W5sbJqLFY95PN78sqITbVU0o4bIzVeqvnuRsvXd9wI7C5qywiu/Zdx7F
+    KS0jdnYBr8TxWKkPE0+DKs/FAK+z99SVG9Sv46Y/zpfCu0kOGL13CP+XNvjTWyLr
+    iHWG232WHYmQdUUamhEC5cJKGBeeNBlAVZNQAQKBgCxEuuzMZ1r6oRuXfK1eTyyw
+    tMwqDU5mknY0UK3kKzeCZG+qMzo1oDf18xDo7ocvd0QdxuKs/74ZYTk9BFT4AW32
+    +36v8LsYuD4JaS5qQqXclFbvq1aJxN9FbCPNuQXfGSBjZJ74YkqJI/0R2dmFwa9w
+    yByzd/QVLoto/GkUFjGI
+    -----END PRIVATE KEY-----
+  
+  symmetric-key-256: PfrlLTH9tRsTMMevfqDVcvMNO5MfBUM58LfdeFVvr0Y=

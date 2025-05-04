@@ -1,0 +1,13 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: sqldb
+  namespace: default
+spec:
+  type: bindings.postgresql
+  version: v1
+  metadata:
+    - name: url
+      value: "user=postgres password=docker host=postgres port=5432 dbname=orders sslmode=disable"
+    - name: direction
+      value: output

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-invocation-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-invocation-backend
+  template:
+    metadata:
+      labels:
+        app: service-invocation-backend
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "service-invocation-backend"
+        dapr.io/app-port: "5001"
+        dapr.io/config: "app-access-policy"
+    spec:
+      containers:
+        - name: service-invocation-backend
+          image: tommygood/dapr-service-invocation-backend:latest
+          ports:
+            - containerPort: 5001

@@ -1,0 +1,17 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: app-access-policy
+spec:
+  accessControl:
+    defaultAction: deny
+    trustDomain: "public"
+    policies:
+    - appId: service-invocation-frontend
+      defaultAction: deny
+      trustDomain: 'public'
+      namespace: "default"
+      operations:
+      - name: /orders
+        httpVerb: ['*']
+        action: allow

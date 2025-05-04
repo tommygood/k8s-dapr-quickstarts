@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-invocation-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-invocation-frontend
+  template:
+    metadata:
+      labels:
+        app: service-invocation-frontend
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "service-invocation-frontend"
+        dapr.io/app-port: "3001"
+    spec:
+      containers:
+        - name: frontend
+          image: tommygood/dapr-service-invocation-frontend:latest
+          ports:
+            - containerPort: 3001

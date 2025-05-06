@@ -12,6 +12,12 @@ spec:
         policy: constant
         duration: 5s
         maxRetries: -1 
+      retry5xxOnly:
+        policy: constant
+        duration: 5s
+        maxRetries: 3
+        matching:
+          httpStatusCodes: "500-599" # retry the HTTP status codes in this range. All others are not retried.
 
     circuitBreakers:
       simpleCB:

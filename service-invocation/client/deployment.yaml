@@ -15,6 +15,7 @@ spec:
         dapr.io/enabled: "true"
         dapr.io/app-id: "service-invocation-frontend"
         dapr.io/app-port: "3001"
+        dapr.io/config: "app-access-policy"
     spec:
       containers:
         - name: frontend

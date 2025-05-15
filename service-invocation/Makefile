@@ -8,7 +8,7 @@ up:
 	kubectl apply -f ./server/deployment.yaml
 	kubectl apply -f ./client/deployment.yaml
 
-clean:
+down:
 	kubectl delete deploy service-invocation-backend
 	kubectl delete deploy service-invocation-frontend
 	kubectl delete Resiliency myresiliency

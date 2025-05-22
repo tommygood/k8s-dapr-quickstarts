@@ -44,6 +44,7 @@ async function main() {
   }
 }
 
+// A js job schedular
 async function scheduleJob(jobName, jobBody) {
   const reqURL = `${daprHost}:${jobServiceDaprHttpPort}/v1.0-alpha1/jobs/${jobName}`;
   const response = await fetch(reqURL, {

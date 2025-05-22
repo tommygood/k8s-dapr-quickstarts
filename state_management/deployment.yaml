@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dapr-state-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dapr-state-management
+  template:
+    metadata:
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "dapr-state-management"
+      labels:
+        app: dapr-state-management
+    spec:
+      containers:
+        - name: dapr-state-management
+          image: tommygood/dapr-state-management:latest
+          command: ["npm", "run", "start"]

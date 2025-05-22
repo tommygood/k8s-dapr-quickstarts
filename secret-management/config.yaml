@@ -1,0 +1,10 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: appconfig
+spec:
+  secrets:
+    scopes:
+      - storeName: vault
+        defaultAccess: deny
+        allowedSecrets: ["secret1", "secret2"]

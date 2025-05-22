@@ -11,7 +11,7 @@ async function main() {
     }
   };
   
-  for(var i = 1; i <= 20; i++) {
+  for(var i = 1; i <= 3; i++) {
     await sleep(1000);
 
     const order = {orderId: i};
@@ -19,6 +19,18 @@ async function main() {
     // Invoking a service
     const res = await axios.post(`${DAPR_HOST}:${DAPR_HTTP_PORT}/orders`, order , axiosConfig);
     console.log("Order passed: " + res.config.data);
+  }
+  try {
+    await axios.get(`${DAPR_HOST}:${DAPR_HTTP_PORT}/test`, axiosConfig);
+  }
+  catch(e) {
+    console.error(e);
+  }
+  try {
+    await axios.get(`${DAPR_HOST}:${DAPR_HTTP_PORT}/test-server-error`, axiosConfig);
+  }
+  catch(e) {
+    console.error(e);
   }
 }
 

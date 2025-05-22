@@ -1,17 +1,13 @@
 NAMESPACE=default
-DEPLOYMENT_NAME=dapr-bindings
+DEPLOYMENT_NAME=dapr-state-management
 
 up:
 	kubectl apply -f components
-	kubectl apply -f db
 	kubectl apply -f ./deployment.yaml
 
 down:
-	kubectl delete components cron
-	kubectl delete components sqldb
-	kubectl delete deployment postgres
-	kubectl delete service postgres
-	kubectl delete deploy dapr-bindings
+	kubectl delete components statestore
+	kubectl delete deployment $(DEPLOYMENT_NAME)
 
 build-image:
 	sudo docker build -t tommygood/$(DEPLOYMENT_NAME):latest .

@@ -2,31 +2,32 @@ apiVersion: dapr.io/v1alpha1
 kind: Resiliency
 metadata:
   name: myresiliency
-scopes:
+scopes: # optionally scope the policy to specific apps
   - service-invocation-frontend
+  - service-invocation-backend
 
 spec:
   policies:
+    timeouts:
+      general: 5s # Time duration for timeouts marked as “general”
+      important: 60s
     retries:
-      retryForever:
-        policy: constant
-        duration: 5s
-        maxRetries: -1 
       retry5xxOnly:
-        policy: constant
-        duration: 5s
-        maxRetries: 3
+        policy: constant # Valid values are constant and exponential
+        duration: 5s # The time interval between retries
+        maxRetries: 3 # The maximum number of retries to attempt
         matching:
-          httpStatusCodes: "500-599" # retry the HTTP status codes in this range. All others are not retried.
-
+          httpStatusCodes: "500-599" # retry the HTTP status codes in this range
     circuitBreakers:
       simpleCB:
-        maxRequests: 1
-        timeout: 5s 
-        trip: consecutiveFailures >= 5
+        maxRequests: 1 # allowed requests when half-open
+        interval: 10s # window to reset failure counts
+        timeout: 5s # time to stay open before half-open
+        trip: consecutiveFailures >= 5 # CEL expression for tripping the breaker
 
   targets:
     apps:
-      service-invocation-backend:
-        retry: retryForever
+      service-invocation-backend: # app-id
+        timeout: general
+        retry: retry5xxOnly
         circuitBreaker: simpleCB

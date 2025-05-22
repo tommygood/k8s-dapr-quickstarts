@@ -11,14 +11,17 @@ spec:
     enabled: true
     recordErrorCodes: true
   accessControl:
-    defaultAction: deny
-    trustDomain: "public"
-    policies:
+    defaultAction: deny # Global default action when no other policy is matched
+    trustDomain: "public" # A logical group assigned to the application.
+    policies: # The operation the calling app can do on the called app
     - appId: service-invocation-frontend
       defaultAction: deny
       trustDomain: 'public'
-      namespace: "default"
-      operations:
-      - name: /orders
-        httpVerb: ['*']
-        action: allow
+      namespace: "default" # needs to be matched with the calling app
+      operations: # operations that are allowed from the calling app
+      - name: /orders # Path name of the operations allowed on the called app
+        httpVerb: ['*'] # List specific http verbs that can be used by the calling app. 
+        action: allow # Accepted values “allow” (default) or “deny”
+      - name: /test-server-error # Path name of the operations allowed on the called app
+        httpVerb: ['*'] # List specific http verbs that can be used by the calling app. 
+        action: allow # Accepted values “allow” (default) or “deny”

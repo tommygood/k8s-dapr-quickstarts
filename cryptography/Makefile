@@ -6,7 +6,7 @@ up:
 	kubectl apply -f ./configmap.yaml
 	kubectl apply -f ./deployment.yaml
 
-clean:
+down:
 	kubectl delete configmap dapr-crypto-keys
 	kubectl delete deploy dapr-cryptography
 	kubectl delete components localstorage

@@ -1,13 +1,13 @@
 .PHONY: apply delete logs
 
-NAMESPACE=default
+NAMESPACE=dapr-istio
 
-apply:
+up:
 	kubectl apply -f redis-pubsub.yaml -n $(NAMESPACE)
 	kubectl apply -f sub/deployment.yaml -n $(NAMESPACE)
 	kubectl apply -f pub/deployment.yaml -n $(NAMESPACE)
 
-delete:
+down:
 	kubectl delete -f pub/deployment.yaml -n $(NAMESPACE) || true
 	kubectl delete -f sub/deployment.yaml -n $(NAMESPACE) || true
 	kubectl delete -f redis-pubsub.yaml -n $(NAMESPACE) || true

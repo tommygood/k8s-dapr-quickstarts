@@ -9,10 +9,11 @@ build-image:
 push-image: build-image
 	sudo docker push tommygood/$(DEPLOYMENT_NAME):latest
 
-delete:
+down:
+	kubectl delete component configstore
 	kubectl delete deploy $(DEPLOYMENT_NAME)
 
-apply:
+up:
 	kubectl apply -f deployment.yaml -n $(NAMESPACE)
 	kubectl apply -f configuration-store.yaml
 

@@ -16,11 +16,14 @@ async function start() {
     communicationProtocol: CommunicationProtocolEnum.GRPC,
   });
 
-  // Encrypt and decrypt a message from a buffer
+  // Use RSA to Encrypt and decrypt a message from a buffer
   await encryptDecryptBuffer(client);
 
-  // Encrypt and decrypt a message using streams
+  // Use AES to Encrypt and decrypt a message using streams
   await encryptDecryptStream(client);
+
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  await sleep(30000);
 }
 
 async function encryptDecryptBuffer(client) {

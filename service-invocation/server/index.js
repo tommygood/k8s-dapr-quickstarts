@@ -19,7 +19,7 @@ async function pub(traceparent) {
 
 app.post('/orders', async (req, res) => {
 	console.log("Order received:", req.body);
-	const traceparent = req.headers['traceparent']; // ← capture tracing header
+	const traceparent = req.headers['traceparent']; // capture tracing header
 	await pub(traceparent);
 	res.sendStatus(200);
 });
